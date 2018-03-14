@@ -50,7 +50,7 @@ class IntField extends Field {
   renderEdit() {
     return (
       <div>
-        <input type="text" class={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value}/>
+        <input type="text" className={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value}/>
       </div>
     )
   }

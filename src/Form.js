@@ -1,36 +1,22 @@
 import React, { Component } from 'react';
 
-class Field extends Component {
-  renderShow() {
-    return (
-      <div>
-        {this.props.value}
-      </div>
-    )
-  }
-  render() {
-    if (this.props.edit)
-      return this.renderEdit()
-    else
-      return this.renderShow()
-  }
-}
-
-class TextField extends Field {
+class TextField extends Component {
   onChange(e) {
     if (this.props.onChange)
       this.props.onChange(e.target.value)
   }
-  renderEdit() {
+  render() {
+    const isViewMode = !this.props.edit;
+
     return (
       <div>
-        <input type="text" onChange={this.onChange.bind(this)} value={this.props.value}/>
+        <input type="text" onChange={this.onChange.bind(this)} value={this.props.value} disabled={isViewMode}/>
       </div>
     )
   }
 }
 
-class IntField extends Field {
+class IntField extends Component {
   constructor(props) {
     super(props)
     this.state = { value: props.value, cls: "valid" }
@@ -47,10 +33,12 @@ class IntField extends Field {
       this.setState({value: e.target.value, cls: "invalid"})
     }
   }
-  renderEdit() {
+  render() {
+    const isViewMode = !this.props.edit;
+
     return (
       <div>
-        <input type="text" className={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value}/>
+        <input type="text" className={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value} disabled={isViewMode}/>
       </div>
     )
   }
@@ -89,4 +77,4 @@ class Form extends Component {
   }
 }
 
-export {Form, IntField, TextField, Field};
+export {Form, IntField, TextField};

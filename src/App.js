@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, IntField, TextField, Field} from './Form.js';
+import {Form, IntField, TextField} from './Form.js';
 import './App.css';
 
 class App extends Component {
@@ -20,7 +20,7 @@ class App extends Component {
       <div className="App">
         <h1>Form example</h1>
 
-        <Form edit={true} value={this.state.auction} onChange={(val) => this.setState({auction: val})}>
+        <Form edit={false} value={this.state.auction} onChange={(val) => this.setState({auction: val})}>
           <TextField label="Hersteller" attr="maker" />
           <TextField label="Modell" attr="model" />
           <IntField label="Laufleistung" attr="mileage" />

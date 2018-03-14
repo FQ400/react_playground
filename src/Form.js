@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 
-class TextField extends Component {
-  onChange(e) {
-    if (this.props.onChange)
-      this.props.onChange(e.target.value)
-  }
-  render() {
-    const isViewMode = !this.props.edit;
+const TextField = ({ onChange, edit, value }) => {
+  const isViewMode = !edit;
 
-    return (
-      <div>
-        <input type="text" onChange={this.onChange.bind(this)} value={this.props.value} disabled={isViewMode}/>
-      </div>
-    )
-  }
-}
+  return (
+    <div>
+      <input type="text" onChange={(evt) => onChange(evt.target.value)} value={value} disabled={isViewMode}/>
+    </div>
+  )
+};
 
 class IntField extends Component {
   constructor(props) {

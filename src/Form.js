@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-const TextField = ({ onChange, edit, value }) => {
+const TextField = ({ onChange, edit, value, label }) => {
   const isViewMode = !edit;
 
   return (
     <div>
+      <label>{label}</label>
       <input type="text" onChange={(evt) => onChange(evt.target.value)} value={value} disabled={isViewMode}/>
     </div>
   )
@@ -32,6 +33,7 @@ class IntField extends Component {
 
     return (
       <div>
+        <label>{this.props.label}</label>
         <input type="text" className={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value} disabled={isViewMode}/>
       </div>
     )
@@ -39,14 +41,6 @@ class IntField extends Component {
 }
 
 class Form extends Component {
-  renderFormField(field) {
-    return (
-      <div>
-        <label>{field.props.label}</label>
-        {field}
-      </div>
-    )
-  }
   changeAttribute(attribute, value) {
     let newValue = Object.assign({}, this.props.value)
     newValue[attribute] = value
@@ -65,7 +59,7 @@ class Form extends Component {
 
     return (
       <form>
-        {React.Children.map(childrenWithProps, (child) => { return this.renderFormField(child) } ) }
+        {childrenWithProps}
       </form>
     )
   }

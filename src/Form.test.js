@@ -23,6 +23,13 @@ describe('TextField', () => {
 
     expect(wrapper.find('input').prop('value')).toBe("McLaren");
   });
+
+  test('renders a form label containing the prop label', () => {
+    const label = 'Hersteller';
+    const wrapper = shallow(<TextField label={label} />);
+
+    expect(wrapper.text()).toBe(label);
+  });
 });
 
 describe('IntField', () => {

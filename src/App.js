@@ -21,9 +21,9 @@ class App extends Component {
         <h1>Form example</h1>
 
         <Form edit={true} value={this.state.auction} onChange={(val) => this.setState({auction: val})}>
-          <TextField label="Hersteller" attr="maker" />   
-          <TextField label="Modell" attr="model" />   
-          <IntField label="Laufleistung" attr="mileage" />   
+          <TextField label="Hersteller" attr="maker" />
+          <TextField label="Modell" attr="model" />
+          <IntField label="Laufleistung" attr="mileage" />
         </Form>
 
       </div>

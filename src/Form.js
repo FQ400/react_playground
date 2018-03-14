@@ -16,27 +16,26 @@ class IntField extends Component {
     super(props)
     this.state = { value: props.value, cls: "valid" }
   }
-  onChange(e) {
-    console.log("event", e)
-    if (e.target.value.match(/^ *\d* *$/)) {
-      this.setState({value: e.target.value, cls: "valid"})
-      if (this.props.onChange)
-        this.props.onChange(parseInt(e.target.value))
+  onChange(val) {
+
+    if (val.match(/^ *\d* *$/)) {
+      this.setState({value: val, cls: "valid"})
     }
     else
     {
-      this.setState({value: e.target.value, cls: "invalid"})
+      this.setState({value: val, cls: "invalid"})
     }
   }
   render() {
-    const isViewMode = !this.props.edit;
+    const props = {
+      edit: this.props.edit,
+      label: this.props.label,
+      onChange: this.onChange.bind(this),
+      value: this.state.value,
+      className: this.state.cls
+    }
 
-    return (
-      <div>
-        <label>{this.props.label}</label>
-        <input type="text" className={this.state.cls} onChange={this.onChange.bind(this)} value={this.state.value} disabled={isViewMode}/>
-      </div>
-    )
+    return <TextField {...props}/>
   }
 }
 

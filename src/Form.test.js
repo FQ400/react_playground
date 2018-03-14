@@ -39,9 +39,9 @@ describe('TextField', () => {
 });
 
 describe('IntField', () => {
-  it('respects the show mode, which adds the disabled attribute', () => {
+  it('renders a TextField component with provided props', () => {
     const wrapper = shallow(<IntField edit={false} />);
 
-    expect(wrapper.find('input').prop('disabled')).toBe(true);
+    expect(wrapper.find(TextField).prop('edit')).toBe(false);
   });
 });

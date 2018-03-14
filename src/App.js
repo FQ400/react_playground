@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Form, IntField, TextField} from './Form.js';
 import './App.css';
 
+const onlyNumbers = (arg) => arg.match(/^ *\d* *$/);
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,7 @@ class App extends Component {
         <Form edit={true} value={this.state.auction} onChange={(val) => this.setState({auction: val})}>
           <TextField label="Hersteller" attr="maker" />
           <TextField label="Modell" attr="model" />
-          <IntField label="Laufleistung" attr="mileage" />
+          <IntField label="Laufleistung" attr="mileage" validate={onlyNumbers} />
         </Form>
 
       </div>

@@ -16,15 +16,10 @@ class IntField extends Component {
     super(props)
     this.state = { value: props.value, cls: "valid" }
   }
-  onChange(val) {
+  onChange(value) {
+    const className = this.props.validate(value) ? 'valid' : 'invalid';
 
-    if (val.match(/^ *\d* *$/)) {
-      this.setState({value: val, cls: "valid"})
-    }
-    else
-    {
-      this.setState({value: val, cls: "invalid"})
-    }
+    this.setState({ value, cls: className})
   }
   render() {
     const props = {

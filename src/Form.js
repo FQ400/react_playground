@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-const TextField = ({ onChange, edit, value, label }) => {
+const TextField = ({ onChange, edit, value, label, className }) => {
   const isViewMode = !edit;
 
   return (
     <div>
       <label>{label}</label>
-      <input type="text" onChange={(evt) => onChange(evt.target.value)} value={value} disabled={isViewMode}/>
+      <input type="text" className={className} onChange={(evt) => onChange(evt.target.value)} value={value} disabled={isViewMode}/>
     </div>
   )
 };

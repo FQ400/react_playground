@@ -30,6 +30,12 @@ describe('TextField', () => {
 
     expect(wrapper.text()).toBe(label);
   });
+
+  test('applies provided className props', () => {
+    const wrapper = shallow(<TextField className='valid' />);
+
+    expect(wrapper.find('input').prop('className')).toBe('valid');
+  });
 });
 
 describe('IntField', () => {
